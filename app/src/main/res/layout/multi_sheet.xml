@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="android.support.design.widget.CoordinatorLayout">
+
+    <FrameLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <FrameLayout
+        android:id="@+id/sheet1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:behavior_peekHeight="64dp"
+        app:layout_behavior="com.simplecityapps.test.ui.behavior.CustomBottomSheetBehavior"
+        tools:ignore="MissingPrefix">
+
+        <FrameLayout
+            android:id="@+id/sheet1Container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="64dp"/>
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/sheet1Coordinator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/sheet2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:behavior_peekHeight="64dp"
+                app:layout_behavior="com.simplecityapps.test.ui.behavior.CustomBottomSheetBehavior">
+
+                <FrameLayout
+                    android:id="@+id/sheet2Container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <FrameLayout
+                    android:id="@+id/sheet2PeekView"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"/>
+
+            </FrameLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <FrameLayout
+            android:id="@+id/sheet1PeekView"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"/>
+
+    </FrameLayout>
+
+</merge>
