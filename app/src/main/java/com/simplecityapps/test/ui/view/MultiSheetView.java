@@ -67,6 +67,11 @@ public class MultiSheetView extends CoordinatorLayout {
             }
         });
 
+        // FIXME:
+        // This click listener (combined with a nested RecyclerView in Sheet 2's container), causes
+        // the second peek view to stop responding to drag events.
+        // See `Sheet2Controller`. Remove this ClickListener here to see things working as they should.
+
         //Second sheet view click listener
         findViewById(getSheet2PeekViewResId()).setOnClickListener(new OnClickListener() {
             @Override
