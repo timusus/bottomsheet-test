@@ -8,7 +8,6 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.simplecityapps.test.R;
 import com.simplecityapps.test.ui.behavior.CustomBottomSheetBehavior;
@@ -39,10 +38,10 @@ public class MultiSheetView extends CoordinatorLayout {
 
         inflate(context, R.layout.multi_sheet, this);
 
-        FrameLayout sheet1 = (FrameLayout) findViewById(R.id.sheet1);
+        View sheet1 = findViewById(R.id.sheet1);
         bottomSheetBehavior1 = (CustomBottomSheetBehavior) BottomSheetBehavior.from(sheet1);
 
-        FrameLayout sheet2 = (FrameLayout) findViewById(R.id.sheet2);
+        View sheet2 = findViewById(R.id.sheet2);
         bottomSheetBehavior2 = (CustomBottomSheetBehavior) BottomSheetBehavior.from(sheet2);
         bottomSheetBehavior2.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -56,7 +55,7 @@ public class MultiSheetView extends CoordinatorLayout {
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
+                bottomSheetBehavior1.setAllowDragging(false);
             }
         });
 

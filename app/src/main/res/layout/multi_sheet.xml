@@ -20,42 +20,81 @@
         app:layout_behavior="com.simplecityapps.test.ui.behavior.CustomBottomSheetBehavior"
         tools:ignore="MissingPrefix">
 
-        <FrameLayout
-            android:id="@+id/sheet1Container"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="64dp"/>
-
-        <android.support.design.widget.CoordinatorLayout
-            android:id="@+id/sheet1Coordinator"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
 
             <FrameLayout
-                android:id="@+id/sheet2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:behavior_peekHeight="64dp"
-                app:layout_behavior="com.simplecityapps.test.ui.behavior.CustomBottomSheetBehavior">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <FrameLayout
-                    android:id="@+id/sheet2Container"
+                    android:id="@+id/sheet1Container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
                 <FrameLayout
-                    android:id="@+id/sheet2PeekView"
+                    android:id="@+id/sheet1PeekView"
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"/>
+                    android:layout_height="64dp"
+                    android:background="#2196F3">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="sans-serif"
+                        android:text="Sheet 1 Peek"
+                        android:textColor="#fff"
+                        android:textSize="24sp"/>
+
+                </FrameLayout>
+
+                <android.support.design.widget.CoordinatorLayout
+                    android:id="@+id/sheet1Coordinator"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/sheet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:behavior_peekHeight="64dp"
+                        app:layout_behavior="com.simplecityapps.test.ui.behavior.CustomBottomSheetBehavior">
+
+                        <FrameLayout
+                            android:id="@+id/sheet2PeekView"
+                            android:layout_width="match_parent"
+                            android:layout_height="64dp"
+                            android:background="#009688">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="sans-serif"
+                                android:text="Sheet 2 Peek"
+                                android:textColor="#fff"
+                                android:textSize="24sp"/>
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/sheet2Container"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+
+                </android.support.design.widget.CoordinatorLayout>
             </FrameLayout>
 
-        </android.support.design.widget.CoordinatorLayout>
 
-        <FrameLayout
-            android:id="@+id/sheet1PeekView"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"/>
+        </LinearLayout>
+
 
     </FrameLayout>
 
