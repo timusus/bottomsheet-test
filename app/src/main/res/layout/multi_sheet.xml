@@ -45,7 +45,8 @@
             <FrameLayout
                 android:id="@+id/sheet1Container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="64dp"/>
 
         </LinearLayout>
 
@@ -62,34 +63,28 @@
                 app:behavior_peekHeight="64dp"
                 app:layout_behavior="com.simplecityapps.test.ui.behavior.CustomBottomSheetBehavior">
 
-                <LinearLayout
+                <FrameLayout
+                    android:id="@+id/sheet2PeekView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="64dp"
+                    android:background="#009688">
 
-                    <FrameLayout
-                        android:id="@+id/sheet2PeekView"
-                        android:layout_width="match_parent"
-                        android:layout_height="64dp"
-                        android:background="#009688">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="sans-serif"
+                        android:text="Sheet 2 Peek"
+                        android:textColor="#fff"
+                        android:textSize="24sp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="sans-serif"
-                            android:text="Sheet 2 Peek"
-                            android:textColor="#fff"
-                            android:textSize="24sp"/>
+                </FrameLayout>
 
-                    </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/sheet2Container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
 
-                    <FrameLayout
-                        android:id="@+id/sheet2Container"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-
-                </LinearLayout>
             </LinearLayout>
         </android.support.design.widget.CoordinatorLayout>
     </FrameLayout>
