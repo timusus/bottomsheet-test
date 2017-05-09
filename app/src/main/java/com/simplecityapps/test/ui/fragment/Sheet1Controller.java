@@ -2,12 +2,22 @@ package com.simplecityapps.test.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.simplecityapps.navigation.fragment.BaseController;
+import com.simplecityapps.recycler_adapter.adapter.ViewModelAdapter;
+import com.simplecityapps.recycler_adapter.model.ViewModel;
 import com.simplecityapps.test.R;
+import com.simplecityapps.test.ui.viewmodel.HorizontalListItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Sheet1Controller extends BaseController {
@@ -29,6 +39,22 @@ public class Sheet1Controller extends BaseController {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_sheet1, container, false);
+
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        ViewModelAdapter adapter = new ViewModelAdapter();
+        recyclerView.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        SnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
+
+        List<ViewModel> items = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            items.add(new HorizontalListItem(String.format("Item %d", i)));
+        }
+        adapter.setItems(items);
 
         return rootView;
     }

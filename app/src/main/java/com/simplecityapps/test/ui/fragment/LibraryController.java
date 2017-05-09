@@ -7,19 +7,17 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.simplecityapps.navigation.fragment.BaseController;
 import com.simplecityapps.navigation.fragment.FragmentInfo;
+import com.simplecityapps.recycler_adapter.adapter.ViewModelAdapter;
+import com.simplecityapps.recycler_adapter.model.ViewModel;
 import com.simplecityapps.test.R;
 import com.simplecityapps.test.ui.activity.ToolbarListener;
-import com.simplecityapps.test.ui.adapter.BaseItemAdapter;
-import com.simplecityapps.test.ui.view.ItemViewHolder;
+import com.simplecityapps.test.ui.viewmodel.VerticalListItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,28 +50,37 @@ public class LibraryController extends BaseController {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        recyclerView.setAdapter(new ItemAdapter(new ItemViewHolder.ItemClickListener() {
-            @Override
-            public void itemClicked(View v, int position) {
+        ViewModelAdapter adapter = new ViewModelAdapter();
+        recyclerView.setAdapter(adapter);
 
-                ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
-                String imageTransitionName = ViewCompat.getTransitionName(imageView);
+//        new ItemViewHolder.ItemClickListener() {
+//            @Override
+//            public void itemClicked(View v, int position) {
+//
+//                ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+//                String imageTransitionName = ViewCompat.getTransitionName(imageView);
+//
+//                List<Pair<View, String>> sharedElements = new ArrayList<>();
+//                sharedElements.add(new Pair<View, String>(imageView, imageTransitionName));
+//                sharedElements.add(new Pair<View, String>(toolbar, "toolbar"));
+//
+//                BaseController controller = DetailController.newInstance(imageTransitionName);
+//
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                    Transition moveTransition = TransitionInflater.from(getContext()).inflateTransition(android.R.transition.move);
+//                    controller.setSharedElementEnterTransition(moveTransition);
+//                    controller.setSharedElementReturnTransition(moveTransition);
+//                }
+//
+//                getNavigationController().pushViewController(controller, "DetailController", sharedElements);
+//            }
+//        }));
 
-                List<Pair<View, String>> sharedElements = new ArrayList<>();
-                sharedElements.add(new Pair<View, String>(imageView, imageTransitionName));
-                sharedElements.add(new Pair<View, String>(toolbar, "toolbar"));
-
-                BaseController controller = DetailController.newInstance(imageTransitionName);
-
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    Transition moveTransition = TransitionInflater.from(getContext()).inflateTransition(android.R.transition.move);
-                    controller.setSharedElementEnterTransition(moveTransition);
-                    controller.setSharedElementReturnTransition(moveTransition);
-                }
-
-                getNavigationController().pushViewController(controller, "DetailController", sharedElements);
-            }
-        }));
+        List<ViewModel> items = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            items.add(new VerticalListItem(String.format("Item %d", i)));
+        }
+        adapter.setItems(items);
 
         return rootView;
     }
@@ -84,18 +91,6 @@ public class LibraryController extends BaseController {
 
         if (getActivity() instanceof ToolbarListener) {
             ((ToolbarListener) getActivity()).toolbarAttached((Toolbar) view.findViewById(R.id.toolbar));
-        }
-    }
-
-    private static class ItemAdapter extends BaseItemAdapter {
-
-        ItemAdapter(ItemViewHolder.ItemClickListener itemClickListener) {
-            super(itemClickListener);
-        }
-
-        @Override
-        public String getTransitionPrefix() {
-            return "LibraryAdapter";
         }
     }
 }
