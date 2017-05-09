@@ -15,13 +15,14 @@ android {
 //            targetCompatibility JavaVersion.VERSION_1_8
 //        }
     }
-    
+
     buildTypes {
         release {
             minifyEnabled false
         }
     }
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
