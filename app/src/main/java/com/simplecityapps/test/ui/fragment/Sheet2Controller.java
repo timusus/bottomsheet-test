@@ -9,9 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.simplecityapps.navigation.fragment.BaseController;
+import com.simplecityapps.recycler_adapter.adapter.ViewModelAdapter;
+import com.simplecityapps.recycler_adapter.model.ViewModel;
 import com.simplecityapps.test.R;
-import com.simplecityapps.test.ui.adapter.BaseItemAdapter;
-import com.simplecityapps.test.ui.view.ItemViewHolder;
+import com.simplecityapps.test.ui.viewmodel.VerticalListItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sheet2Controller extends BaseController {
 
@@ -31,30 +35,17 @@ public class Sheet2Controller extends BaseController {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_sheet2, container, false);
 
-        // FIXME:
-        // This RecyclerView (when used in conjunction with a click listener on the 2nd peek view, defined in `MultiSheetView`
-        // causes the 2nd peek view to stop responding to drag events. Remove here and in xml to fix.
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ItemAdapter(new ItemViewHolder.ItemClickListener() {
-            @Override
-            public void itemClicked(View v, int position) {
-                //Nothing to do
-            }
-        }));
+        ViewModelAdapter adapter = new ViewModelAdapter();
+        recyclerView.setAdapter(adapter);
+
+        List<ViewModel> items = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            items.add(new VerticalListItem(String.format("Item %d", i)));
+        }
+        adapter.setItems(items);
 
         return rootView;
-    }
-
-    private static class ItemAdapter extends BaseItemAdapter {
-
-        ItemAdapter(ItemViewHolder.ItemClickListener itemClickListener) {
-            super(itemClickListener);
-        }
-
-        @Override
-        public String getTransitionPrefix() {
-            return "QueueAdapter";
-        }
     }
 }

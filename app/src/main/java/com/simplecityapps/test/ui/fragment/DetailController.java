@@ -12,10 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.simplecityapps.navigation.fragment.BaseController;
+import com.simplecityapps.recycler_adapter.adapter.ViewModelAdapter;
 import com.simplecityapps.test.R;
 import com.simplecityapps.test.ui.activity.ToolbarListener;
-import com.simplecityapps.test.ui.adapter.BaseItemAdapter;
-import com.simplecityapps.test.ui.view.ItemViewHolder;
 
 public class DetailController extends BaseController {
 
@@ -40,12 +39,7 @@ public class DetailController extends BaseController {
 
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ItemAdapter(new ItemViewHolder.ItemClickListener() {
-            @Override
-            public void itemClicked(View v, int position) {
-                //Nothing to do
-            }
-        }));
+        recyclerView.setAdapter(new ViewModelAdapter());
 
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         ViewCompat.setTransitionName(toolbar, "toolbar");
@@ -62,18 +56,6 @@ public class DetailController extends BaseController {
 
         if (getActivity() instanceof ToolbarListener) {
             ((ToolbarListener) getActivity()).toolbarAttached((Toolbar) view.findViewById(R.id.toolbar));
-        }
-    }
-
-    private static class ItemAdapter extends BaseItemAdapter {
-
-        ItemAdapter(ItemViewHolder.ItemClickListener itemClickListener) {
-            super(itemClickListener);
-        }
-
-        @Override
-        public String getTransitionPrefix() {
-            return "DetailAdapter";
         }
     }
 }
