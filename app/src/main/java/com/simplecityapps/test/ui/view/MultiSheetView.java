@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.simplecityapps.test.R;
@@ -77,6 +79,19 @@ public class MultiSheetView extends CoordinatorLayout {
             @Override
             public void onClick(View v) {
                 bottomSheetBehavior2.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
+
+        // FIXED:
+        // issue was  bottomSheetBehavior1 is taking drag event when getSheet2PeekView is dragging
+        // so detect touch event  getSheet2PeekView set bottomSheetBehavior1 dragging false and bottomSheetBehavior2 true
+        findViewById(getSheet2PeekViewResId()).setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.e(TAG, "onTouch: ");
+                bottomSheetBehavior1.setAllowDragging(false);
+                bottomSheetBehavior2.setAllowDragging(true);
+                return false;
             }
         });
     }
