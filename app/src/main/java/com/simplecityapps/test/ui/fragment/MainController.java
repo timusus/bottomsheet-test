@@ -36,9 +36,8 @@ public class MainController extends BaseNavigationController {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        multiSheetView = (MultiSheetView) rootView.findViewById(R.id.multiSheetView);
+        multiSheetView = (MultiSheetView) inflater.inflate(R.layout.multi_sheet, container, false);
 
         if (savedInstanceState == null) {
 
@@ -49,7 +48,7 @@ public class MainController extends BaseNavigationController {
                     .commit();
         }
 
-        return rootView;
+        return multiSheetView;
     }
 
     @Override

@@ -37,8 +37,11 @@ public class MultiSheetView extends CoordinatorLayout {
 
     public MultiSheetView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
 
-        inflate(context, R.layout.multi_sheet, this);
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
 
         View sheet1 = findViewById(R.id.sheet1);
         bottomSheetBehavior1 = (CustomBottomSheetBehavior) BottomSheetBehavior.from(sheet1);
