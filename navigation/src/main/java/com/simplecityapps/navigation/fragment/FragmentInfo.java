@@ -4,14 +4,16 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 public class FragmentInfo implements Parcelable {
 
     public Class rootViewController;
 
-    @Nullable public transient Bundle args;
+    @Nullable
+    public transient Bundle args;
 
     public String rootViewControllerTag;
 

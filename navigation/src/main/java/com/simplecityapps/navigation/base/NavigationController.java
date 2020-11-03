@@ -1,9 +1,10 @@
 package com.simplecityapps.navigation.base;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.util.Pair;
 
 import com.simplecityapps.navigation.fragment.BackPressHandler;
 
@@ -20,8 +21,7 @@ public interface NavigationController<T extends Controller> {
 
     /**
      * Push a {@link Controller} into this {@link NavigationController}
-     *
-     * @param controller the {@link Controller} to push
+     *  @param controller the {@link Controller} to push
      * @param tag        a {@link String} used to identify this controller
      */
     void pushViewController(@NonNull T controller, @Nullable String tag);

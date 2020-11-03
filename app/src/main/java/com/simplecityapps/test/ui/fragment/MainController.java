@@ -1,10 +1,11 @@
 package com.simplecityapps.test.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
 
 import com.simplecityapps.navigation.fragment.BaseNavigationController;
 import com.simplecityapps.navigation.fragment.FragmentInfo;
