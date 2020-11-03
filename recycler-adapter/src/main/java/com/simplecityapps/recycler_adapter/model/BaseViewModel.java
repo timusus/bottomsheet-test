@@ -1,10 +1,11 @@
 package com.simplecityapps.recycler_adapter.model;
 
-import android.support.annotation.CallSuper;
-import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.CallSuper;
+import androidx.annotation.LayoutRes;
 
 import com.simplecityapps.recycler_adapter.recyclerview.BaseViewHolder;
 

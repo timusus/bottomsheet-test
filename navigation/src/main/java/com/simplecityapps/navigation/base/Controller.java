@@ -1,6 +1,7 @@
 package com.simplecityapps.navigation.base;
 
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 public interface Controller {
 
